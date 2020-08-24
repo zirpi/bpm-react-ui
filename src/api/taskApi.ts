@@ -21,7 +21,8 @@ class TaskApi{
     }
 
     public complete(id: string, variables: any) : Promise<any> {
-        const url = this.API_URL + "task/" + id + "/complete";
+        //const url = this.API_URL + "task/" + id + "/complete";
+        const url = "http://localhost:8080/complete/" + id ;
         return fetch(
                 url, 
                 { 

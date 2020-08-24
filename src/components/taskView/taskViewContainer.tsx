@@ -16,11 +16,9 @@ const mapStateToProps = (state: State, ownProps: any) => {
 const mapDispatchToProps = (dispatch: any, ownProps: any) => {
     return {
       loadTask: (id: string) => { return dispatch( taskLoadRequest(id) ) },
-      completeTask: (id: string, rejected: boolean) => { 
-            let variables: any = {};
-            variables.isRejected = { 'value': rejected };        
+      completeTask: (id: string, rejected: boolean) => {         
             taskApi
-                .complete(id, { 'variables': variables } )
+                .complete(id, { 'isRejected': rejected } )
                 .then( resp =>  ownProps.history.push("/tasklist") ) }
     };
 }

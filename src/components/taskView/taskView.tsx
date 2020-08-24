@@ -25,8 +25,8 @@ export const TaskViewComponent = (props : Props) => {
         if (taskRef && taskRef.length > 0 ){
             return ( 
                 <div>
-                <button onClick={ () => props.completeTask(props.task.workflowInstanceId, false) }> Approve</button>&nbsp; or &nbsp;
-                <button onClick={ () => props.completeTask(props.task.workflowInstanceId, true) }> Reject</button>
+                <button onClick={ () => props.completeTask(props.task.id, false) }> Approve</button>&nbsp; or &nbsp;
+                <button onClick={ () => props.completeTask(props.task.id, true) }> Reject</button>
                 </div>
             );
         } else {
@@ -35,7 +35,7 @@ export const TaskViewComponent = (props : Props) => {
     };
 
     const renderHistoryRow = (step: any) => {
-    return <tr><td>{step.name}</td><td>{step.performed}</td> <td>{step.variables}</td> </tr>;
+        return <tr><td>{step.name}</td><td>{step.performed}</td> <td>{step.variables}</td> </tr>;
     }
 
     const renderHistory = (props: Props) => {
@@ -58,13 +58,9 @@ export const TaskViewComponent = (props : Props) => {
     return (     
         <div>
         <br />
-        <h3>Approve or Reject</h3>
+        <h3>Application No.:{ props.task.id }</h3>
         <Container>            
             { renderButtons(props) }
-            <Row>
-                <Col>Task Id:</Col>
-                <Col>{ props.task.id }</Col>
-            </Row>
             <Row>
                 <Col>Most Recently Peformed Step:</Col>
                 <Col>{ props.task.currentStep }</Col>
